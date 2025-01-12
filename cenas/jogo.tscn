@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://38rojqjuxgad"]
+[gd_scene load_steps=12 format=3 uid="uid://38rojqjuxgad"]
 
 [ext_resource type="PackedScene" uid="uid://dh423loskxdve" path="res://cenas/player.tscn" id="1_t447n"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_fw4xf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c4f8gbavjlnno" path="res://botoes/pular_normal.png" id="5_o6a2w"]
 [ext_resource type="Texture2D" uid="uid://xwk81c5dpkpe" path="res://botoes/pular_pressionado.png" id="6_m70ur"]
 [ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="7_vjgf0"]
+[ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="8_v822a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bcvf"]
 
@@ -54,5 +55,8 @@ scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("5_o6a2w")
 texture_pressed = ExtResource("6_m70ur")
 
-[node name="squid game map_green ligh red ligh map_free download" parent="." instance=ExtResource("7_vjgf0")]
+[node name="plataforma" parent="." instance=ExtResource("7_vjgf0")]
 transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 6.87666, 0)
+
+[node name="boneca" parent="." instance=ExtResource("8_v822a")]
+transform = Transform3D(-4.99967, 0, -0.0570711, 0, 5, 0, 0.0570711, 0, -4.99967, 1.23711, -2.01732, 8.39109)

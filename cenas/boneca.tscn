@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://duy7c3ednn2xq"]
+
+[ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="1_lre8x"]
+
+[node name="123WoodManUpdated" instance=ExtResource("1_lre8x")]
+
+[node name="DollHead" parent="." index="2"]
+transform = Transform3D(-0.999422, 0, -0.0339924, 0, 1, 0, 0.0339924, 0, -0.999422, 1.52398e-09, 2.03394, -0.0781334)

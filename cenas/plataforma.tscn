@@ -23,9 +23,6 @@ data = PackedVector3Array(100, 100, -100, -100, 100, -100, -100, -100, -100, 100
 [node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id37/node_id4/node_id5/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_cuf7n")
 
-[node name="node_id8" parent="root/node_id37/node_id7" index="0"]
-visible = false
-
 [node name="StaticBody3D" type="StaticBody3D" parent="root/node_id37/node_id10/node_id11" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id37/node_id10/node_id11/StaticBody3D" index="0"]
