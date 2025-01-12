@@ -17,13 +17,12 @@ var direction = Vector3.ZERO
 func _input(event):
 	if event is InputEventScreenDrag:
 		if event.position.x >= get_viewport().size.x / 3:
-			%cabeca.rotate_x(-deg_to_rad(event.relative.y) * sensibilidade)
+			%cabeça.rotate_x(-deg_to_rad(event.relative.y) * sensibilidade)
 			rotate_y(-deg_to_rad(event.relative.x) * sensibilidade)
 			
-			%cabeca.rotation.x = clamp(%cabeca.rotation.x, deg_to_rad(-45), deg_to_rad(80))
+			%cabeça.rotation.x = clamp(%cabeça.rotation.x, deg_to_rad(-45), deg_to_rad(80))
 
 func _physics_process(delta: float) -> void:
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -49,3 +48,14 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	SPEED = velocidade_normal
+
+# Adicionado: Verificar se o player está se movendo
+func is_moving() -> bool:
+	# Retorna true se o jogador estiver se movendo nos eixos X ou Z
+	return velocity.x != 0 or velocity.z != 0
+
+# Adicionado: Método para eliminar o jogador
+func die():
+	# Código para lidar com a eliminação do jogador
+	print("Você foi eliminado!")
+	queue_free() # Remove o jogador da cena (opcional)
