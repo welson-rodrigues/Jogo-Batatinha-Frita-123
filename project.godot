@@ -15,6 +15,14 @@ run/main_scene="res://cenas/jogo.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1440
+window/size/viewport_height=693
+window/size/mode=4
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [rendering]
 
 renderer/rendering_method="mobile"

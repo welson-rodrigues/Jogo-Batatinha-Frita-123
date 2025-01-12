@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://38rojqjuxgad"]
+[gd_scene load_steps=12 format=3 uid="uid://38rojqjuxgad"]
 
 [ext_resource type="PackedScene" uid="uid://dh423loskxdve" path="res://cenas/player.tscn" id="1_t447n"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_fw4xf"]
+[ext_resource type="Texture2D" uid="uid://chgcqtqe2sixq" path="res://botoes/correr_normal.png" id="3_meort"]
+[ext_resource type="Texture2D" uid="uid://caf4b26hiy3iy" path="res://botoes/correr_pressionado.png" id="4_rlmm3"]
+[ext_resource type="Texture2D" uid="uid://c4f8gbavjlnno" path="res://botoes/pular_normal.png" id="5_o6a2w"]
+[ext_resource type="Texture2D" uid="uid://xwk81c5dpkpe" path="res://botoes/pular_pressionado.png" id="6_m70ur"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bcvf"]
 
@@ -21,9 +25,11 @@ sky = SubResource("Sky_h5581")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s0uv6")
 
-[node name="player" parent="." node_paths=PackedStringArray("joystick") instance=ExtResource("1_t447n")]
+[node name="player" parent="." node_paths=PackedStringArray("joystick", "correr", "pular") instance=ExtResource("1_t447n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 joystick = NodePath("../Control/Virtual Joystick")
+correr = NodePath("../Control/correr")
+pular = NodePath("../Control/pular")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -37,6 +43,19 @@ grow_vertical = 2
 layout_mode = 1
 offset_top = -300.0
 offset_bottom = 0.0
+
+[node name="correr" type="TouchScreenButton" parent="Control"]
+position = Vector2(80, 71)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("3_meort")
+texture_pressed = ExtResource("4_rlmm3")
+passby_press = true
+
+[node name="pular" type="TouchScreenButton" parent="Control"]
+position = Vector2(1141, 417)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("5_o6a2w")
+texture_pressed = ExtResource("6_m70ur")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.86281, 0, 0, 0, 1, 0, 0, 0, 9.78743, 0, -1, 0)

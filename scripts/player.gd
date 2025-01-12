@@ -1,15 +1,22 @@
 extends CharacterBody3D
 
-const SPEED = 10.0
+var velocidade_normal = 5.0
+var velocidade_correr = 10.0
+
+var SPEED = velocidade_normal
 const JUMP_VELOCITY = 4.5
-const sensibilidade = 0.2
+const sensibilidade = 0.3
+
 @export var joystick : VirtualJoystick
+@export var correr : TouchScreenButton
+@export var pular : TouchScreenButton
+
 var input_dir
 var direction = Vector3.ZERO
 
 func _input(event):
 	if event is InputEventScreenDrag:
-		if event.position.x >= get_viewport().size.x / 2:
+		if event.position.x >= get_viewport().size.x / 3:
 			%cabeca.rotate_x(-deg_to_rad(event.relative.y) * sensibilidade)
 			rotate_y(-deg_to_rad(event.relative.x) * sensibilidade)
 			
@@ -20,13 +27,17 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if pular.is_pressed() and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
 	if joystick:
 		input_dir = joystick.output
 	else:
 		input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		
+	if correr.is_pressed():
+		SPEED = velocidade_correr
+		input_dir.y = -1
 		
 	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), 0.5)
 	if direction:
@@ -37,3 +48,4 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	SPEED = velocidade_normal
