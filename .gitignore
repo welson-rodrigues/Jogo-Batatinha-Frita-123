@@ -1,0 +1,13 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Arquivos temporários da Godot
+.import/
+*.tmp
+
+# Logs
+*.log
+
+# Configurações de usuário
+.editor_settings-*
