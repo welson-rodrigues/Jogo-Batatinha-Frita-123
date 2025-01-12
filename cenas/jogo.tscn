@@ -21,8 +21,9 @@ sky = SubResource("Sky_h5581")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s0uv6")
 
-[node name="player" parent="." instance=ExtResource("1_t447n")]
+[node name="player" parent="." node_paths=PackedStringArray("joystick") instance=ExtResource("1_t447n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+joystick = NodePath("../Control/Virtual Joystick")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
