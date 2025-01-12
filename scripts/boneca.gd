@@ -6,7 +6,10 @@ extends Node3D
 @export var angulo_observacao: float = 180.0  # Ângulo de observação (boneca virada para trás)
 
 @export var som_canto: AudioStream  # Som do canto da boneca
+@export var som_virando: AudioStream  # Som da boneca girando
+@export var som_observando: AudioStream  # Som da boneca observando
 var audio_player: AudioStreamPlayer
+var audio_player_extra: AudioStreamPlayer  # Segundo player para sons adicionais
 
 var is_observando = false  # Estado da boneca: observando ou cantando
 var timer: Timer
@@ -18,10 +21,14 @@ func _ready():
 	timer.timeout.connect(_trocar_estado)
 	add_child(timer)
 	
-	# Adiciona o áudio do canto da boneca
+	# Adiciona o áudio principal para o canto
 	audio_player = AudioStreamPlayer.new()
 	add_child(audio_player)
 	audio_player.stream = som_canto
+
+	# Adiciona um segundo player para os outros sons
+	audio_player_extra = AudioStreamPlayer.new()
+	add_child(audio_player_extra)
 	
 	_iniciar_ciclo()  # Começa o ciclo de canto/observação
 
@@ -29,21 +36,27 @@ func _iniciar_ciclo():
 	is_observando = false
 	_set_angulo(angulo_frente)
 	print("Boneca está cantando...")
-	_tocar_canto()
+	_tocar_som(audio_player, som_canto)
 	timer.start(canto_duracao)
 
 func _trocar_estado():
 	if is_observando:
 		_iniciar_ciclo()  # Volta a cantar
 	else:
-		print("Boneca está observando!")
+		print("Boneca está girando para observar!")
+		_tocar_som(audio_player_extra, som_virando)
 		_set_angulo(angulo_observacao)
 		is_observando = true
+		print("Boneca está observando!")
+		_tocar_som(audio_player_extra, som_observando)
 		timer.start(observacao_duracao)
 
-func _tocar_canto():
-	if audio_player and som_canto:
-		audio_player.play()
+func _tocar_som(players: AudioStreamPlayer, som: AudioStream):
+	# Toca o som se estiver configurado
+	if players and som:
+		players.stop()  # Garante que o player esteja livre
+		players.stream = som
+		players.play()
 
 func _set_angulo(alvo_angulo: float):
 	# Aplica o ângulo diretamente
