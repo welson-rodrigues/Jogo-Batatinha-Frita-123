@@ -1,14 +1,14 @@
 extends CharacterBody3D
 
-var velocidade_normal = 5.0
-var velocidade_correr = 10.0
+var velocidade_normal = 4.0
+#var velocidade_correr = 10.0
 
 var SPEED = velocidade_normal
 const JUMP_VELOCITY = 4.5
 const sensibilidade = 0.3
 
 @export var joystick : VirtualJoystick
-@export var correr : TouchScreenButton
+#@export var correr : TouchScreenButton
 @export var pular : TouchScreenButton
 
 var input_dir
@@ -35,9 +35,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		
-	if correr.is_pressed():
-		SPEED = velocidade_correr
-		input_dir.y = -1
+	#if correr.is_pressed():
+		#SPEED = velocidade_correr
+		#input_dir.y = -1
 		
 	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), 0.5)
 	if direction:

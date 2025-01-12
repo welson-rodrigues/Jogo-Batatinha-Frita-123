@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkb5bx5vb84sq"]
+
+[ext_resource type="PackedScene" uid="uid://dyyqdlmkc5hlr" path="res://modelos/squid-game-green-ligh-red-ligh-mapfree-download/source/squid game map_green ligh red ligh map_free download.glb" id="1_2kipl"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cuf7n"]
+data = PackedVector3Array(100, 100, -100, -100, 100, -100, -100, -100, -100, 100, 100, -100, -100, -100, -100, 100, -100, -100, -100, 100, 100, 100, 100, 100, 100, -100, 100, -100, 100, 100, 100, -100, 100, -100, -100, 100, 100, 100, 100, 100, 100, -100, 100, -100, -100, 100, 100, 100, 100, -100, -100, 100, -100, 100, -100, 100, -100, -100, 100, 100, -100, -100, 100, -100, 100, -100, -100, -100, 100, -100, -100, -100, -100, 100, -100, 100, 100, -100, 100, 100, 100, -100, 100, -100, 100, 100, 100, -100, 100, 100, -100, -100, 100, 100, -100, 100, 100, -100, -100, -100, -100, 100, 100, -100, -100, -100, -100, -100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cni6r"]
+data = PackedVector3Array(100, 100, -100, -100, 100, -100, -100, -100, -100, 100, 100, -100, -100, -100, -100, 100, -100, -100, -100, 100, 100, 100, 100, 100, 100, -100, 100, -100, 100, 100, 100, -100, 100, -100, -100, 100, 100, 100, 100, 100, 100, -100, 100, -100, -100, 100, 100, 100, 100, -100, -100, 100, -100, 100, -100, 100, -100, -100, 100, 100, -100, -100, 100, -100, 100, -100, -100, -100, 100, -100, -100, -100, -100, 100, -100, 100, 100, -100, 100, 100, 100, -100, 100, -100, 100, 100, 100, -100, 100, 100, -100, -100, 100, 100, -100, 100, 100, -100, -100, -100, -100, 100, 100, -100, -100, -100, -100, -100)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_07tp2"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dgsva"]
+data = PackedVector3Array(100, 100, -100, -100, 100, -100, -100, -100, -100, 100, 100, -100, -100, -100, -100, 100, -100, -100, -100, 100, 100, 100, 100, 100, 100, -100, 100, -100, 100, 100, 100, -100, 100, -100, -100, 100, 100, 100, 100, 100, 100, -100, 100, -100, -100, 100, 100, 100, 100, -100, -100, 100, -100, 100, -100, 100, -100, -100, 100, 100, -100, -100, 100, -100, 100, -100, -100, -100, 100, -100, -100, -100, -100, 100, -100, 100, 100, -100, 100, 100, 100, -100, 100, -100, 100, 100, 100, -100, 100, 100, -100, -100, 100, 100, -100, 100, 100, -100, -100, -100, -100, 100, 100, -100, -100, -100, -100, -100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_aih8r"]
+data = PackedVector3Array(100, 100, -100, -100, 100, -100, -100, -100, -100, 100, 100, -100, -100, -100, -100, 100, -100, -100, -100, 100, 100, 100, 100, 100, 100, -100, 100, -100, 100, 100, 100, -100, 100, -100, -100, 100, 100, 100, 100, 100, 100, -100, 100, -100, -100, 100, 100, 100, 100, -100, -100, 100, -100, 100, -100, 100, -100, -100, 100, 100, -100, -100, 100, -100, 100, -100, -100, -100, 100, -100, -100, -100, -100, 100, -100, 100, 100, -100, 100, 100, 100, -100, 100, -100, 100, 100, 100, -100, 100, 100, -100, -100, 100, 100, -100, 100, 100, -100, -100, -100, -100, 100, 100, -100, -100, -100, -100, -100)
+
+[node name="squid game map_green ligh red ligh map_free download" instance=ExtResource("1_2kipl")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="root/node_id37/node_id4/node_id5" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id37/node_id4/node_id5/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_cuf7n")
+
+[node name="node_id8" parent="root/node_id37/node_id7" index="0"]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="root/node_id37/node_id10/node_id11" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id37/node_id10/node_id11/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_cni6r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="root/node_id37/node_id13" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id37/node_id13/StaticBody3D" index="0"]
+shape = SubResource("WorldBoundaryShape3D_07tp2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="root/node_id37/node_id16/node_id17" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id37/node_id16/node_id17/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_dgsva")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="root/node_id37/node_id19/node_id20" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id37/node_id19/node_id20/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_aih8r")
+
+[node name="node_id22" parent="root/node_id37" index="6"]
+visible = false
+
+[node name="node_id23" parent="root/node_id37/node_id22" index="0"]
+visible = false
+
+[node name="node_id25" parent="root/node_id37" index="7"]
+visible = false
+
+[node name="node_id26" parent="root/node_id37/node_id25" index="0"]
+visible = false
+
+[node name="node_id28" parent="root/node_id37" index="8"]
+visible = false
+
+[node name="node_id29" parent="root/node_id37/node_id28" index="0"]
+visible = false
+
+[node name="node_id31" parent="root/node_id37" index="9"]
+visible = false
+
+[node name="node_id32" parent="root/node_id37/node_id31" index="0"]
+visible = false
+
+[node name="node_id34" parent="root/node_id37" index="10"]
+visible = false
+
+[node name="node_id35" parent="root/node_id37/node_id34" index="0"]
+visible = false
