@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://38rojqjuxgad"]
+[gd_scene load_steps=16 format=3 uid="uid://38rojqjuxgad"]
 
 [ext_resource type="PackedScene" uid="uid://dh423loskxdve" path="res://cenas/player.tscn" id="1_t447n"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_fw4xf"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/boneca.gd" id="9_by2bb"]
 [ext_resource type="AudioStream" uid="uid://bvn2iuufry3q8" path="res://som/batatinha.mp3" id="10_8jqt2"]
 [ext_resource type="AudioStream" uid="uid://xvbsjnihngh5" path="res://som/analisando.mp3" id="11_4b5px"]
+[ext_resource type="AudioStream" uid="uid://k5qscxcay6kl" path="res://som/som_tiro.mp3" id="12_gcjhp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bcvf"]
 
@@ -62,7 +63,7 @@ texture_pressed = ExtResource("6_m70ur")
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 6.87666, 0)
 
 [node name="boneca" parent="." node_paths=PackedStringArray("jogador") instance=ExtResource("8_v822a")]
-transform = Transform3D(-5.49964, 0, -0.0627781, 0, 5.5, 0, 0.0627781, 0, -5.49964, 2.00972, -3.2638, 9.63006)
+transform = Transform3D(-5.49964, 0, -0.0627781, 0, 5.5, 0, 0.0627781, 0, -5.49964, 1.68117, -3.2638, 9.63006)
 script = ExtResource("9_by2bb")
 canto_duracao = 5.0
 observacao_duracao = 5.0
@@ -70,4 +71,5 @@ angulo_frente = 180.0
 angulo_observacao = 0.0
 som_canto = ExtResource("10_8jqt2")
 som_observando = ExtResource("11_4b5px")
+som_detectado = ExtResource("12_gcjhp")
 jogador = NodePath("../player")
