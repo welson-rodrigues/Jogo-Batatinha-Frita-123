@@ -6,6 +6,7 @@ var velocidade_normal = 3.0
 var SPEED = velocidade_normal
 const JUMP_VELOCITY = 4.5
 const sensibilidade = 0.3
+var is_moving = false
 
 @export var joystick : VirtualJoystick
 #@export var correr : TouchScreenButton
