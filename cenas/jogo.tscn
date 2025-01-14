@@ -65,7 +65,7 @@ transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 6.87666, 0)
 [node name="boneca" parent="." node_paths=PackedStringArray("jogador") instance=ExtResource("8_v822a")]
 transform = Transform3D(-5.49964, 0, -0.0627781, 0, 5.5, 0, 0.0627781, 0, -5.49964, 1.68117, -3.2638, 9.63006)
 script = ExtResource("9_by2bb")
-canto_duracao = 5.0
+canto_duracao = 5.7
 observacao_duracao = 5.0
 angulo_frente = 180.0
 angulo_observacao = 0.0
