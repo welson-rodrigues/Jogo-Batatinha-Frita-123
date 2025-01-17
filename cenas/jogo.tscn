@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://38rojqjuxgad"]
+[gd_scene load_steps=17 format=3 uid="uid://38rojqjuxgad"]
 
 [ext_resource type="PackedScene" uid="uid://dh423loskxdve" path="res://cenas/player.tscn" id="1_t447n"]
 [ext_resource type="AudioStream" uid="uid://cicfm586231tt" path="res://som/som_de_passos_1.mp3" id="2_73jmb"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="7_vjgf0"]
 [ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="8_v822a"]
 [ext_resource type="Script" path="res://scripts/boneca.gd" id="9_by2bb"]
+[ext_resource type="AudioStream" uid="uid://bvn2iuufry3q8" path="res://som/batatinha.mp3" id="11_qu1fn"]
+[ext_resource type="AudioStream" uid="uid://xvbsjnihngh5" path="res://som/analisando.mp3" id="12_xqhsu"]
+[ext_resource type="AudioStream" uid="uid://k5qscxcay6kl" path="res://som/som_tiro.mp3" id="13_sn7bj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bcvf"]
 
@@ -63,10 +66,12 @@ transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 6.87666, 0)
 
 [node name="boneca" parent="." node_paths=PackedStringArray("jogador") instance=ExtResource("8_v822a")]
 transform = Transform3D(-5.49964, 0, -0.0627781, 0, 5.5, 0, 0.0627781, 0, -5.49964, 1.68117, -3.2638, 9.63006)
-visible = false
 script = ExtResource("9_by2bb")
 canto_duracao = 5.7
 observacao_duracao = 5.0
 angulo_frente = 180.0
 angulo_observacao = 0.0
+som_canto = ExtResource("11_qu1fn")
+som_observando = ExtResource("12_xqhsu")
+som_detectado = ExtResource("13_sn7bj")
 jogador = NodePath("../player")

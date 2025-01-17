@@ -17,7 +17,7 @@ var input_dir = Vector2.ZERO
 var tempo_para_proximo_passo: float = 0.0  # Temporizador para controlar os passos
 var audio_player: AudioStreamPlayer  # Player para reproduzir o som
 
-const BOB_FREQ = 2.5
+const BOB_FREQ = 3.1
 const BOB_AMP = 0.09
 var t_bob = 0.0
 
