@@ -1,23 +1,133 @@
-[gd_scene format=3 uid="uid://dvxt10sh357rg"]
+[gd_scene load_steps=18 format=3 uid="uid://w7ohgn17kc82"]
 
-[node name="menu" type="Control"]
-layout_mode = 3
+[ext_resource type="Texture2D" uid="uid://dwj8bvhmum3s4" path="res://imagens/start_red.png" id="6_pq7wa"]
+[ext_resource type="Texture2D" uid="uid://ccaa5f6pd73qt" path="res://imagens/título.png" id="7_7c66y"]
+[ext_resource type="AudioStream" uid="uid://qf1f5csxkixx" path="res://som/musica_menu.mp3" id="7_41fbf"]
+[ext_resource type="Texture2D" uid="uid://b6df1i1ev2d1h" path="res://imagens/start.png" id="8_8vcns"]
+[ext_resource type="Texture2D" uid="uid://c2wrbkp0eym8j" path="res://imagens/quit_red.png" id="8_ra0dv"]
+[ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="8_u72xu"]
+[ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="9_1yxya"]
+[ext_resource type="Texture2D" uid="uid://ddgt3ivetep6r" path="res://imagens/quit.png" id="9_mxra3"]
+[ext_resource type="Script" path="res://scripts/boneca.gd" id="10_wqqes"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bcvf"]
+sky_top_color = Color(0.180392, 0.313726, 0.384314, 1)
+sky_horizon_color = Color(0.384314, 0.572549, 0.662745, 1)
+
+[sub_resource type="Sky" id="Sky_h5581"]
+sky_material = SubResource("ProceduralSkyMaterial_0bcvf")
+
+[sub_resource type="Environment" id="Environment_s0uv6"]
+background_mode = 2
+sky = SubResource("Sky_h5581")
+ambient_light_color = Color(0.3078, 0.3952, 0.57, 0.27451)
+
+[sub_resource type="Gradient" id="Gradient_muhtc"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4jjds"]
+gradient = SubResource("Gradient_muhtc")
+fill_from = Vector2(0.343212, 0)
+
+[sub_resource type="Animation" id="Animation_fnlso"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/título:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_iu3yl"]
+resource_name = "titulo"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/título:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.566667, 1, 1.53333, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1.025, 1.025), Vector2(1.1, 1.1), Vector2(0.975, 0.975), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s352v"]
+_data = {
+"RESET": SubResource("Animation_fnlso"),
+"titulo": SubResource("Animation_iu3yl")
+}
+
+[node name="menu" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s0uv6")
+
+[node name="plataforma" parent="." instance=ExtResource("8_u72xu")]
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 6.87666, 0)
+
+[node name="boneca" parent="." instance=ExtResource("9_1yxya")]
+transform = Transform3D(-5.49964, 0, -0.0627781, 0, 5.5, 0, 0.0627781, 0, -5.49964, 1.44067, -3.08694, 9.61873)
+script = ExtResource("10_wqqes")
+canto_duracao = 5.7
+observacao_duracao = 5.0
+angulo_frente = 180.0
+angulo_observacao = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999765, 0, -0.0216753, 0, 1, 0, 0.0216753, 0, 0.999765, -2.9138, 6.73087, 18.0703)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46327, 13.4189)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.27451)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("GradientTexture2D_4jjds")
 
-[node name="principal" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="título" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(368, 188)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("7_7c66y")
+offset = Vector2(-3.05176e-05, 0)
 
-[node name="titulo_jogo" type="TextureRect" parent="principal"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 593.0
+offset_bottom = 693.0
 
-[node name="botoes" type="HBoxContainer" parent="principal"]
-layout_mode = 2
+[node name="start" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
+position = Vector2(0, 312)
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("8_8vcns")
+texture_pressed = ExtResource("6_pq7wa")
+
+[node name="quit" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
+position = Vector2(0, 412)
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("9_mxra3")
+texture_pressed = ExtResource("8_ra0dv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s352v")
+}
+autoplay = "titulo"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_41fbf")
+autoplay = true
