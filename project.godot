@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="batata"
-run/main_scene="res://cenas/jogo.tscn"
+run/main_scene="res://cenas/menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
