@@ -14,10 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://xvbsjnihngh5" path="res://som/analisando.mp3" id="12_xqhsu"]
 [ext_resource type="AudioStream" uid="uid://k5qscxcay6kl" path="res://som/som_tiro.mp3" id="13_sn7bj"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bcvf"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sptrt"]
 
 [sub_resource type="Sky" id="Sky_h5581"]
-sky_material = SubResource("ProceduralSkyMaterial_0bcvf")
+sky_material = SubResource("ProceduralSkyMaterial_sptrt")
 
 [sub_resource type="Environment" id="Environment_s0uv6"]
 background_mode = 2
@@ -75,3 +75,6 @@ som_canto = ExtResource("11_qu1fn")
 som_observando = ExtResource("12_xqhsu")
 som_detectado = ExtResource("13_sn7bj")
 jogador = NodePath("../player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.970733, 0.168416, 0.171214, -0.174421, 0.0043252, 0.984662, 0.165092, -0.985707, 0.0335738, 0, 14.1581, 44.2006)

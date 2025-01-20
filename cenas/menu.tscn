@@ -1,17 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://w7ohgn17kc82"]
+[gd_scene load_steps=19 format=3 uid="uid://w7ohgn17kc82"]
 
-[ext_resource type="Texture2D" uid="uid://dwj8bvhmum3s4" path="res://imagens/start_red.png" id="6_pq7wa"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_h4k70"]
+[ext_resource type="Texture2D" uid="uid://dqdoto6ul1jmx" path="res://imagens/start_novo.png" id="5_hle1b"]
+[ext_resource type="Texture2D" uid="uid://qvjakh0hctvs" path="res://imagens/quit_novo.png" id="6_aduur"]
+[ext_resource type="Texture2D" uid="uid://b3wf08a47gac" path="res://imagens/start_red_new.png" id="6_i6vaa"]
 [ext_resource type="Texture2D" uid="uid://ccaa5f6pd73qt" path="res://imagens/título.png" id="7_7c66y"]
 [ext_resource type="AudioStream" uid="uid://qf1f5csxkixx" path="res://som/musica_menu.mp3" id="7_41fbf"]
-[ext_resource type="Texture2D" uid="uid://b6df1i1ev2d1h" path="res://imagens/start.png" id="8_8vcns"]
-[ext_resource type="Texture2D" uid="uid://c2wrbkp0eym8j" path="res://imagens/quit_red.png" id="8_ra0dv"]
+[ext_resource type="Texture2D" uid="uid://t6xidngnen72" path="res://imagens/quit_red_new.png" id="8_i5dd3"]
 [ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="8_u72xu"]
 [ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="9_1yxya"]
-[ext_resource type="Texture2D" uid="uid://ddgt3ivetep6r" path="res://imagens/quit.png" id="9_mxra3"]
 [ext_resource type="Script" path="res://scripts/boneca.gd" id="10_wqqes"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bcvf"]
-sky_top_color = Color(0.180392, 0.313726, 0.384314, 1)
+sky_top_color = Color(0.32549, 0.490196, 0.572549, 1)
 sky_horizon_color = Color(0.384314, 0.572549, 0.662745, 1)
 
 [sub_resource type="Sky" id="Sky_h5581"]
@@ -20,7 +21,6 @@ sky_material = SubResource("ProceduralSkyMaterial_0bcvf")
 [sub_resource type="Environment" id="Environment_s0uv6"]
 background_mode = 2
 sky = SubResource("Sky_h5581")
-ambient_light_color = Color(0.3078, 0.3952, 0.57, 0.27451)
 
 [sub_resource type="Gradient" id="Gradient_muhtc"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
@@ -68,6 +68,7 @@ _data = {
 }
 
 [node name="menu" type="Node3D"]
+script = ExtResource("1_h4k70")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s0uv6")
@@ -111,16 +112,16 @@ offset_right = 593.0
 offset_bottom = 693.0
 
 [node name="start" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
-position = Vector2(0, 312)
+position = Vector2(52, 471)
 scale = Vector2(0.3, 0.3)
-texture_normal = ExtResource("8_8vcns")
-texture_pressed = ExtResource("6_pq7wa")
+texture_normal = ExtResource("5_hle1b")
+texture_pressed = ExtResource("6_i6vaa")
 
 [node name="quit" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
-position = Vector2(0, 412)
+position = Vector2(52, 577)
 scale = Vector2(0.3, 0.3)
-texture_normal = ExtResource("9_mxra3")
-texture_pressed = ExtResource("8_ra0dv")
+texture_normal = ExtResource("6_aduur")
+texture_pressed = ExtResource("8_i5dd3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -131,3 +132,6 @@ autoplay = "titulo"
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_41fbf")
 autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
