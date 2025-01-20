@@ -1,6 +1,6 @@
-extends Node3D
+extends MeshInstance3D
 
-@onready var timer = $Timer as Timer
+@onready var timer = $"../Timer" as Timer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.start()
@@ -12,4 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://cenas/espera.tscn")
+	queue_free()
+	get_tree().change_scene_to_file("res://cenas/jogo.tscn")
+	

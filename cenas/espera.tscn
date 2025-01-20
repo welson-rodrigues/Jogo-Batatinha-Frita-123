@@ -1,0 +1,101 @@
+[gd_scene load_steps=18 format=3 uid="uid://6xgwby84rpob"]
+
+[ext_resource type="PackedScene" uid="uid://dh423loskxdve" path="res://cenas/player.tscn" id="1_wpjaw"]
+[ext_resource type="AudioStream" uid="uid://cicfm586231tt" path="res://som/som_de_passos_1.mp3" id="2_q1yfq"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_7jji5"]
+[ext_resource type="Texture2D" uid="uid://chgcqtqe2sixq" path="res://botoes/correr_normal.png" id="4_kub4v"]
+[ext_resource type="Texture2D" uid="uid://caf4b26hiy3iy" path="res://botoes/correr_pressionado.png" id="5_iyst0"]
+[ext_resource type="Texture2D" uid="uid://c4f8gbavjlnno" path="res://botoes/pular_normal.png" id="6_cmkle"]
+[ext_resource type="Texture2D" uid="uid://xwk81c5dpkpe" path="res://botoes/pular_pressionado.png" id="7_r0iia"]
+[ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="8_62b7q"]
+[ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="9_ws7pm"]
+[ext_resource type="Script" path="res://scripts/boneca.gd" id="10_vleim"]
+[ext_resource type="AudioStream" uid="uid://ckqj1ljxblobc" path="res://som/musica_espera.mp3" id="12_6r1ct"]
+[ext_resource type="Script" path="res://scripts/barreira.gd" id="12_85iux"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sptrt"]
+
+[sub_resource type="Sky" id="Sky_h5581"]
+sky_material = SubResource("ProceduralSkyMaterial_sptrt")
+
+[sub_resource type="Environment" id="Environment_s0uv6"]
+background_mode = 2
+sky = SubResource("Sky_h5581")
+
+[sub_resource type="BoxMesh" id="BoxMesh_x8dhk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4vmxj"]
+
+[node name="espera" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s0uv6")
+
+[node name="player" parent="." node_paths=PackedStringArray("pular", "joystick") instance=ExtResource("1_wpjaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.43333, 76.9327)
+pular = NodePath("../Control/pular")
+joystick = NodePath("../Control/Virtual Joystick")
+som_passos = ExtResource("2_q1yfq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Virtual Joystick" parent="Control" instance=ExtResource("3_7jji5")]
+layout_mode = 1
+offset_top = -300.0
+offset_bottom = 0.0
+
+[node name="correr" type="TouchScreenButton" parent="Control"]
+visible = false
+position = Vector2(80, 71)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("4_kub4v")
+texture_pressed = ExtResource("5_iyst0")
+passby_press = true
+
+[node name="pular" type="TouchScreenButton" parent="Control"]
+position = Vector2(1141, 417)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("6_cmkle")
+texture_pressed = ExtResource("7_r0iia")
+
+[node name="plataforma" parent="." instance=ExtResource("8_62b7q")]
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 6.87666, 0)
+
+[node name="boneca" parent="." instance=ExtResource("9_ws7pm")]
+transform = Transform3D(-5.49964, 0, -0.0627781, 0, 5.5, 0, 0.0627781, 0, -5.49964, 1.44096, -3.08694, 9.61873)
+script = ExtResource("10_vleim")
+canto_duracao = 5.7
+observacao_duracao = 5.0
+angulo_frente = 180.0
+angulo_observacao = 0.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.970733, 0.168416, 0.171214, -0.174421, 0.0043252, 0.984662, 0.165092, -0.985707, 0.0335738, 0, 14.1581, 44.2006)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(40.5612, 0, 0, 0, 4.45692, 0, 0, 0, 1, 0.14802, -1.15309, 69.2215)
+visible = false
+mesh = SubResource("BoxMesh_x8dhk")
+script = ExtResource("12_85iux")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_4vmxj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 18.0
+one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_6r1ct")
+volume_db = 51.357
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="MeshInstance3D" method="_on_timer_timeout"]
