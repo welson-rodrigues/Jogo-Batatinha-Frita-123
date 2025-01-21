@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://w7ohgn17kc82"]
+[gd_scene load_steps=21 format=3 uid="uid://w7ohgn17kc82"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_h4k70"]
 [ext_resource type="Texture2D" uid="uid://dqdoto6ul1jmx" path="res://imagens/start_novo.png" id="5_hle1b"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://t6xidngnen72" path="res://imagens/quit_red_new.png" id="8_i5dd3"]
 [ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="8_u72xu"]
 [ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="9_1yxya"]
+[ext_resource type="Texture2D" uid="uid://blly5l217prht" path="res://imagens/Settings Square Button.png" id="10_lgta8"]
 [ext_resource type="Script" path="res://scripts/boneca.gd" id="10_wqqes"]
+[ext_resource type="Texture2D" uid="uid://refmb24y1apt" path="res://imagens/Questionmark Square Button.png" id="11_lnsgd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bcvf"]
 sky_top_color = Color(0.32549, 0.490196, 0.572549, 1)
@@ -122,6 +124,16 @@ position = Vector2(52, 577)
 scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("6_aduur")
 texture_pressed = ExtResource("8_i5dd3")
+
+[node name="settings" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1313, 52)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_lgta8")
+
+[node name="sobre" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1391, 53)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("11_lnsgd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
