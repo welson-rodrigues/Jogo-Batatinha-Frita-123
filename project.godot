@@ -15,6 +15,10 @@ run/main_scene="res://cenas/menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicController="*res://cenas/music_controller.tscn"
+
 [display]
 
 window/size/viewport_width=1440

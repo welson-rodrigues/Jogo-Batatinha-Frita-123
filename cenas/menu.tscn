@@ -1,17 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://w7ohgn17kc82"]
+[gd_scene load_steps=22 format=3 uid="uid://w7ohgn17kc82"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_h4k70"]
 [ext_resource type="Texture2D" uid="uid://dqdoto6ul1jmx" path="res://imagens/start_novo.png" id="5_hle1b"]
 [ext_resource type="Texture2D" uid="uid://qvjakh0hctvs" path="res://imagens/quit_novo.png" id="6_aduur"]
 [ext_resource type="Texture2D" uid="uid://b3wf08a47gac" path="res://imagens/start_red_new.png" id="6_i6vaa"]
 [ext_resource type="Texture2D" uid="uid://ccaa5f6pd73qt" path="res://imagens/título.png" id="7_7c66y"]
-[ext_resource type="AudioStream" uid="uid://qf1f5csxkixx" path="res://som/musica_menu.mp3" id="7_41fbf"]
 [ext_resource type="Texture2D" uid="uid://t6xidngnen72" path="res://imagens/quit_red_new.png" id="8_i5dd3"]
 [ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="8_u72xu"]
 [ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="9_1yxya"]
-[ext_resource type="Texture2D" uid="uid://blly5l217prht" path="res://imagens/Settings Square Button.png" id="10_lgta8"]
+[ext_resource type="Texture2D" uid="uid://b3vilqpb2bggq" path="res://imagens/Audio Square Button.png" id="10_5waii"]
 [ext_resource type="Script" path="res://scripts/boneca.gd" id="10_wqqes"]
-[ext_resource type="Texture2D" uid="uid://refmb24y1apt" path="res://imagens/Questionmark Square Button.png" id="11_lnsgd"]
+[ext_resource type="Texture2D" uid="uid://o5rwulyk0hcl" path="res://imagens/no_sound.png" id="11_1ygqe"]
+[ext_resource type="Texture2D" uid="uid://rxgyw8hg3lp6" path="res://imagens/Info Square Button.png" id="11_ml2gs"]
+[ext_resource type="AudioStream" uid="uid://qf1f5csxkixx" path="res://som/musica_menu.mp3" id="13_ccihk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bcvf"]
 sky_top_color = Color(0.32549, 0.490196, 0.572549, 1)
@@ -125,15 +126,17 @@ scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("6_aduur")
 texture_pressed = ExtResource("8_i5dd3")
 
-[node name="settings" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1313, 52)
+[node name="sound" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(1283, 22)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("10_lgta8")
+texture_normal = ExtResource("10_5waii")
+texture_pressed = ExtResource("11_1ygqe")
 
-[node name="sobre" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1391, 53)
+[node name="info" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(1361, 22)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("11_lnsgd")
+texture_normal = ExtResource("11_ml2gs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -142,7 +145,7 @@ libraries = {
 autoplay = "titulo"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("7_41fbf")
+stream = ExtResource("13_ccihk")
 autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/start" to="." method="_on_start_pressed"]
