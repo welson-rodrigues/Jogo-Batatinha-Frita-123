@@ -11,6 +11,8 @@ extends Node3D
 @export var som_detectado: AudioStream
 
 @export var jogador: CharacterBody3D
+@export var canva: CanvasLayer
+@export var botoes: Control
 
 var audio_player: AudioStreamPlayer
 var audio_player_extra: AudioStreamPlayer
@@ -33,12 +35,12 @@ func _ready():
 	add_child(audio_player_extra)
 
 	_iniciar_ciclo()
+	#canva.visible = false
 
 func _iniciar_ciclo():
 	is_observando = false
 	jogador_detectado = false
 	_set_angulo(angulo_frente)
-	print("Boneca está cantando...")
 	_tocar_som(audio_player, som_canto)
 	timer.start(canto_duracao)
 
@@ -62,6 +64,8 @@ func _process(delta: float):
 			jogador_detectado = true
 			print("Jogador se moveu enquanto a boneca estava virada!")
 			_tocar_som(audio_player_extra, som_detectado)
+			canva.visible = true
+			botoes.visible = false
 
 func _tocar_som(player: AudioStreamPlayer, som: AudioStream):
 	if player and som:
