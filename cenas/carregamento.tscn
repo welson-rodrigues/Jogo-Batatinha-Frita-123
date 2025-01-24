@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="2_x4dy8"]
 [ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="3_05ntl"]
-[ext_resource type="Script" path="res://scripts/timer.gd" id="4_pjgrs"]
-[ext_resource type="Script" path="res://scripts/boneca.gd" id="4_u6tbm"]
+[ext_resource type="Script" uid="uid://dx6vqb16ebfhh" path="res://scripts/timer.gd" id="4_pjgrs"]
+[ext_resource type="Script" uid="uid://ftmlembpoekw" path="res://scripts/boneca.gd" id="4_u6tbm"]
 [ext_resource type="Texture2D" uid="uid://ccaa5f6pd73qt" path="res://imagens/título.png" id="5_7ydw0"]
 [ext_resource type="Texture2D" uid="uid://dqdoto6ul1jmx" path="res://imagens/start_novo.png" id="6_61jr6"]
 [ext_resource type="Texture2D" uid="uid://cin5ngdmqpmbk" path="res://imagens/carregando.png" id="6_j0obc"]
@@ -63,8 +63,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s352v"]
 _data = {
-"RESET": SubResource("Animation_fnlso"),
-"titulo": SubResource("Animation_iu3yl")
+&"RESET": SubResource("Animation_fnlso"),
+&"titulo": SubResource("Animation_iu3yl")
 }
 
 [node name="carregamento" type="Node3D"]
@@ -133,7 +133,7 @@ texture_pressed = ExtResource("9_of3qu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_s352v")
+&"": SubResource("AnimationLibrary_s352v")
 }
 autoplay = "titulo"
 

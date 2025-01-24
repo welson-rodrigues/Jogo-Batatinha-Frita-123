@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://xwk81c5dpkpe" path="res://botoes/pular_pressionado.png" id="7_r0iia"]
 [ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="8_62b7q"]
 [ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="9_ws7pm"]
-[ext_resource type="Script" path="res://scripts/boneca.gd" id="10_vleim"]
-[ext_resource type="AudioStream" uid="uid://ckqj1ljxblobc" path="res://som/musica_espera.mp3" id="12_6r1ct"]
-[ext_resource type="Script" path="res://scripts/barreira.gd" id="12_85iux"]
+[ext_resource type="Script" uid="uid://ftmlembpoekw" path="res://scripts/boneca.gd" id="10_vleim"]
+[ext_resource type="Script" uid="uid://b7442w5jihsms" path="res://scripts/barreira.gd" id="12_85iux"]
+[ext_resource type="AudioStream" uid="uid://dtudf0377mlmj" path="res://som/eh_hora_de_comecar.mp3" id="12_x2x4s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sptrt"]
 
@@ -94,8 +94,8 @@ wait_time = 18.0
 one_shot = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("12_6r1ct")
-volume_db = 51.357
+stream = ExtResource("12_x2x4s")
+volume_db = 50.0
 autoplay = true
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]

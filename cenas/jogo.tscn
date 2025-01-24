@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://38rojqjuxgad"]
+[gd_scene load_steps=22 format=3 uid="uid://38rojqjuxgad"]
 
 [ext_resource type="PackedScene" uid="uid://dh423loskxdve" path="res://cenas/player.tscn" id="1_t447n"]
 [ext_resource type="AudioStream" uid="uid://cicfm586231tt" path="res://som/som_de_passos_1.mp3" id="2_73jmb"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://xwk81c5dpkpe" path="res://botoes/pular_pressionado.png" id="6_m70ur"]
 [ext_resource type="PackedScene" uid="uid://bkb5bx5vb84sq" path="res://cenas/plataforma.tscn" id="7_vjgf0"]
 [ext_resource type="PackedScene" uid="uid://b2xfuobupnxle" path="res://modelos/squid-game-doll/source/123WoodMan/123WoodManUpdated.fbx" id="8_v822a"]
-[ext_resource type="Script" path="res://scripts/boneca.gd" id="9_by2bb"]
+[ext_resource type="Script" uid="uid://ftmlembpoekw" path="res://scripts/boneca.gd" id="9_by2bb"]
 [ext_resource type="AudioStream" uid="uid://bvn2iuufry3q8" path="res://som/batatinha.mp3" id="11_qu1fn"]
 [ext_resource type="AudioStream" uid="uid://xvbsjnihngh5" path="res://som/analisando.mp3" id="12_xqhsu"]
 [ext_resource type="AudioStream" uid="uid://k5qscxcay6kl" path="res://som/som_tiro.mp3" id="13_sn7bj"]
@@ -31,8 +31,6 @@ albedo_color = Color(0.678431, 0.305882, 0.666667, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4v36l"]
 material = SubResource("StandardMaterial3D_docdr")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cur68"]
 
 [node name="jogo" type="Node3D"]
 
@@ -135,13 +133,8 @@ texture = ExtResource("16_1bhb2")
 transform = Transform3D(0.423269, 0.819942, 0.385407, -0.384904, 0.547834, -0.742783, -0.820179, 0.166052, 0.54748, 3.13372, 19.8402, 47.002)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(39.8376, 0, 0, 0, 1, 0, 0, 0, 2.80695, -0.168782, -2.62949, 20.0667)
+transform = Transform3D(39.8376, 0, 0, 0, 0.311071, 0, 0, 0, 3.10984, 0.0633534, -3.05283, 19.8728)
 mesh = SubResource("BoxMesh_4v36l")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_cur68")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/revive" to="boneca" method="_on_revive_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/desistir" to="boneca" method="_on_desistir_pressed"]
