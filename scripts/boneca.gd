@@ -75,3 +75,10 @@ func _tocar_som(player: AudioStreamPlayer, som: AudioStream):
 
 func _set_angulo(alvo_angulo: float):
 	rotation_degrees.y = alvo_angulo
+
+
+func _on_revive_pressed() -> void:
+	get_tree().change_scene_to_file("res://cenas/jogo.tscn")
+
+func _on_desistir_pressed() -> void:
+	get_tree().change_scene_to_file("res://cenas/menu.tscn")

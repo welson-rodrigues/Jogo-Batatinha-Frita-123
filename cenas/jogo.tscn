@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://38rojqjuxgad"]
+[gd_scene load_steps=23 format=3 uid="uid://38rojqjuxgad"]
 
 [ext_resource type="PackedScene" uid="uid://dh423loskxdve" path="res://cenas/player.tscn" id="1_t447n"]
 [ext_resource type="AudioStream" uid="uid://cicfm586231tt" path="res://som/som_de_passos_1.mp3" id="2_73jmb"]
@@ -25,6 +25,14 @@ sky_material = SubResource("ProceduralSkyMaterial_sptrt")
 [sub_resource type="Environment" id="Environment_s0uv6"]
 background_mode = 2
 sky = SubResource("Sky_h5581")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_docdr"]
+albedo_color = Color(0.678431, 0.305882, 0.666667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4v36l"]
+material = SubResource("StandardMaterial3D_docdr")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cur68"]
 
 [node name="jogo" type="Node3D"]
 
@@ -68,7 +76,7 @@ texture_pressed = ExtResource("6_m70ur")
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 6.87666, 0)
 
 [node name="boneca" parent="." node_paths=PackedStringArray("jogador", "canva", "botoes") instance=ExtResource("8_v822a")]
-transform = Transform3D(-5.49964, 0, -0.0627781, 0, 5.5, 0, 0.0627781, 0, -5.49964, 1.44096, -3.08694, 9.61873)
+transform = Transform3D(-5.49964, 0, -0.0627781, 0, 5.5, 0, 0.0627781, 0, -5.49964, 1.44096, -3.44143, 9.61873)
 script = ExtResource("9_by2bb")
 canto_duracao = 5.7
 observacao_duracao = 5.0
@@ -122,3 +130,18 @@ texture_normal = ExtResource("15_tomax")
 position = Vector2(732, 161)
 scale = Vector2(1.7, 1.7)
 texture = ExtResource("16_1bhb2")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.423269, 0.819942, 0.385407, -0.384904, 0.547834, -0.742783, -0.820179, 0.166052, 0.54748, 3.13372, 19.8402, 47.002)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(39.8376, 0, 0, 0, 1, 0, 0, 0, 2.80695, -0.168782, -2.62949, 20.0667)
+mesh = SubResource("BoxMesh_4v36l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_cur68")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/revive" to="boneca" method="_on_revive_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/desistir" to="boneca" method="_on_desistir_pressed"]
