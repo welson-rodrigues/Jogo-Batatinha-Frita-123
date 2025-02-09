@@ -85,7 +85,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _tocar_som_passos():
-	# Reproduz o som dos passos se configurado
 	if audio_player and not audio_player.playing:
 		audio_player.play()
 

@@ -13,6 +13,8 @@ extends Node3D
 @export var jogador: CharacterBody3D
 @export var canva: CanvasLayer
 @export var botoes: Control
+@export var final: MeshInstance3D
+@export var area: Area3D
 
 var audio_player: AudioStreamPlayer
 var audio_player_extra: AudioStreamPlayer
@@ -66,6 +68,8 @@ func _process(delta: float):
 			_tocar_som(audio_player_extra, som_detectado)
 			canva.visible = true
 			botoes.visible = false
+			final.visible = false
+			area.visible = false
 
 func _tocar_som(player: AudioStreamPlayer, som: AudioStream):
 	if player and som:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://38rojqjuxgad"]
+[gd_scene load_steps=24 format=3 uid="uid://38rojqjuxgad"]
 
 [ext_resource type="PackedScene" uid="uid://dh423loskxdve" path="res://cenas/player.tscn" id="1_t447n"]
 [ext_resource type="AudioStream" uid="uid://cicfm586231tt" path="res://som/som_de_passos_1.mp3" id="2_73jmb"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bdg6532m6njic" path="res://imagens/Return Square Button.png" id="14_b11pf"]
 [ext_resource type="Texture2D" uid="uid://d4abw53rnml70" path="res://imagens/Home Square Button.png" id="15_tomax"]
 [ext_resource type="Texture2D" uid="uid://rj7kpny01nfe" path="res://imagens/1737566612128.png" id="16_1bhb2"]
+[ext_resource type="Script" uid="uid://cjh26h3s31n0d" path="res://scripts/area_3d.gd" id="17_8bbpn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sptrt"]
 
@@ -31,6 +32,8 @@ albedo_color = Color(0.678431, 0.305882, 0.666667, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4v36l"]
 material = SubResource("StandardMaterial3D_docdr")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5n1n7"]
 
 [node name="jogo" type="Node3D"]
 
@@ -71,9 +74,9 @@ texture_normal = ExtResource("5_o6a2w")
 texture_pressed = ExtResource("6_m70ur")
 
 [node name="plataforma" parent="." instance=ExtResource("7_vjgf0")]
-transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 6.87666, 0)
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0.0315819, 6.87666, 0.0200157)
 
-[node name="boneca" parent="." node_paths=PackedStringArray("jogador", "canva", "botoes") instance=ExtResource("8_v822a")]
+[node name="boneca" parent="." node_paths=PackedStringArray("jogador", "canva", "botoes", "final", "area") instance=ExtResource("8_v822a")]
 transform = Transform3D(-5.49964, 0, -0.0627781, 0, 5.5, 0, 0.0627781, 0, -5.49964, 1.44096, -3.44143, 9.61873)
 script = ExtResource("9_by2bb")
 canto_duracao = 5.7
@@ -86,6 +89,8 @@ som_detectado = ExtResource("13_sn7bj")
 jogador = NodePath("../player")
 canva = NodePath("../CanvasLayer")
 botoes = NodePath("../Control")
+final = NodePath("../MeshInstance3D")
+area = NodePath("../MeshInstance3D/Area3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.970733, 0.168416, 0.171214, -0.174421, 0.0043252, 0.984662, 0.165092, -0.985707, 0.0335738, 0, 14.1581, 44.2006)
@@ -133,8 +138,14 @@ texture = ExtResource("16_1bhb2")
 transform = Transform3D(0.423269, 0.819942, 0.385407, -0.384904, 0.547834, -0.742783, -0.820179, 0.166052, 0.54748, 3.13372, 19.8402, 47.002)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(39.8376, 0, 0, 0, 0.311071, 0, 0, 0, 3.10984, 0.0633534, -3.05283, 19.8728)
+transform = Transform3D(39.8376, 0, 0, 0, 0.311071, 0, 0, 0, 3.10984, 0.0633534, -3.05283, 19.9606)
 mesh = SubResource("BoxMesh_4v36l")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+script = ExtResource("17_8bbpn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("BoxShape3D_5n1n7")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/revive" to="boneca" method="_on_revive_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/desistir" to="boneca" method="_on_desistir_pressed"]
