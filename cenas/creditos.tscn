@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://dugfo8hp0uii6"]
+[gd_scene load_steps=4 format=3 uid="uid://dugfo8hp0uii6"]
+
+[ext_resource type="Texture2D" uid="uid://dsvyi0eo888vu" path="res://imagens/creditos.png" id="1_dmlrq"]
+[ext_resource type="Script" uid="uid://djdy0vw55fgp1" path="res://scripts/creditos.gd" id="1_rdysq"]
+[ext_resource type="Texture2D" uid="uid://dip7m70rufs41" path="res://imagens/Back Square Button.png" id="2_f7osg"]
 
 [node name="creditos" type="Node2D"]
+script = ExtResource("1_rdysq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(674, 334)
+texture = ExtResource("1_dmlrq")
+
+[node name="sair" type="TouchScreenButton" parent="."]
+position = Vector2(34, 554)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_f7osg")
+
+[connection signal="pressed" from="sair" to="." method="_on_sair_pressed"]
